@@ -51,7 +51,7 @@ class AAA:
         return result #define inner function
 
 #piem
-number=input("input number to romanize:")
+number=int(input("input number to romanize:"))
 convert = AAA()
 roman_number = convert.to_roman(number)
 print(f"{number} roman number is {roman_number}")
