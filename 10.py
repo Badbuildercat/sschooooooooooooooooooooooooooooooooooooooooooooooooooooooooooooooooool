@@ -1,92 +1,74 @@
 """
-how are window tools made
-
-header window - file name thing name and an icon and the 
-3 magic buttons
-tool window - all them tools
-information window - information
-______________________________
-Librarys
-tkinter, pysimple
-
-1. import the tkinter model
-2. make the main program window
-3. add the tools
-4. name the main window
-_______________________________
-geomatry makning
-1 pack methode    (pady=10) for padding
-2 grid methode
-3 place methode "the only good one"
-_______________________
-window tools
-1. text lable
-2. text window
-3. button
-4. pick a sqaure
-5. list
-6. text box
+pysimple GUI
+goal - make an actaul calculator
+result - a broken calculator that only remembers the second input
 """
-#import
-from tkinter import*
-from tkinter import messagebox
-#make the window
-window=Tk()
-#how to change icon
-window.iconbitmap('sv.ico')
-window.geometry("500x300+100+50")
-window.title("have you come to give us your stuff?")
-# add buttons
-"""
+import PySimpleGUI as sg
 
-all a waste
+# time for functions
+def calculate(num1, num2, operation):
+    try:
+        num1=float(num1)
+        num2=float(num2)
+        if operation == '+':
+            resault=num1 + num2
+        elif operation == 'x':
+            resault=num1 * num2
+        elif operation == '-':
+            resault=num1 - num2
+    except ValueError:
+        return "Problems have hapened"
+    return resault
 
-red_button=Button(window, text="red", fg="red")
-red_button.pack(side=LEFT)
-red_button=Button(window, text="green", fg="green")
-red_button.pack(side=TOP)
-red_button=Button(window, text="blue", fg="blue")
-red_button.pack(side=BOTTOM)
-red_button=Button(window, text="yellow", fg="yellow")
-red_button.pack(side=RIGHT)
-
-now we grid
-"""
-"""
-also useles
-
-red_button=Button(window, text="red", fg="red")
-red_button.grid(row=0, column=2)
-name1=Label(window, text="name").grid(row=1, column=3)
-input1=Entry(window).grid(row=1, column=4)
-name2=Label(window, text="last name").grid(row=2, column=3)
-input2=Entry(window).grid(row=2, column=4)
-
-time to place
-
-"""
-def intresting_mesage():
-    name=input1.get()
-    messagebox.showinfo("acusation", f"Youre a comunist {name}!")
-
-name1=Label(window, text="name")
-name1.place(x=50, y=50)
-input1=Entry(window)
-input1.place(x=100, y=50)
-
-#make a window where you put your name
-#and push a button to get a thing
-
-input_window=Entry(window, width=30)
-input_window.place(x=0, y=100)
-
-thing_button=Button(window, text="press me", command=intresting_mesage)
-thing_button.place(x=200, y=100)
+#make the stuff save
+current_input='' # 1234567890
+current_operation='' # + x
 
 
 
+#make the gui places
+
+layout=[
+    [sg.InputText(key='-DISPLAY-',size=(20,1), justification='right',readonly=True)],
+    [sg.Button('1'), sg.Button('2'), sg.Button('3'), sg.Button('+')],
+    [sg.Button('4'), sg.Button('5'), sg.Button('6'), sg.Button('x')],
+    [sg.Button('7'), sg.Button('8'), sg.Button('9'), sg.Button('C')],
+    [sg.Button('0'), sg.Button('='), sg.Button('Exit'), sg.Button('-')]
+]
+
+#make a window
+
+window=sg.Window('calculator', layout, resizable=True)
+
+#show the window with a cycle and break it when it closes
+
+while True:
+    event, value=window.read()
+    if event==sg.WIN_CLOSED or event=='Exit':
+        break
+#if number is pressed then add it to the text box
+    elif event in '1234567890':
+        current_input += event
+        window['-DISPLAY-'].update(current_input)
+#if the + or x button is pressed than give the answer and clear  the input window
+    elif event in '+x-':
+        current_operation=event
+        current_input=''
+        window['-DISPLAY-'].update(current_input)
+#if you click C it clears everything
+    elif event == 'C':
+        current_operation=''
+        current_input=''
+        window['-DISPLAY-'].update(current_input)
+#if the = button is pressed make the calculation and put it in the text box
+    elif event == '=':
+        resault=calculate(current_input, value['-DISPLAY-'], current_operation)
+        window['-DISPLAY-'].update(resault  if resault is not None else '') 
+        current_input=str(resault) if resault is not None else ''
 
 
 
-#start doing
-window.mainloop()
+
+
+
+window.close
