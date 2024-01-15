@@ -67,7 +67,7 @@ time to place
 """
 def intresting_mesage():
     name=input1.get()
-    messagebox.showinfo("acusation", f"Youre a comunist {name}!")
+    messagebox.showinfo("acusation", f"Youre a communist {name}!")
 
 name1=Label(window, text="name")
 name1.place(x=50, y=50)
