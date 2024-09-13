@@ -1,0 +1,11 @@
+{
+    "name":"bob",
+    "last name":"yes",
+    "age":30,
+    "adres":{
+         "street":"22 long street",
+         "town":"madrid",
+         "country":"old mexico"
+    },
+    "things i do":["computor", "book", "yes" ]
+ }
