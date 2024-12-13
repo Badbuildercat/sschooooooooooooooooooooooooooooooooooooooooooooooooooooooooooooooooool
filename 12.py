@@ -44,8 +44,10 @@ window=sg.Window('calculator', layout, resizable=True)
 
 while True:
     event, value=window.read()
-    if event==sg.WIN_CLOSED or event=='Exit':
+    if event==sg.WIN_CLOSED:
         break
+    if event=='Exit':
+        sg.popup_annoying("NO")
 #if number is pressed then add it to the text box
     elif event in '1234567890':
         current_input += event

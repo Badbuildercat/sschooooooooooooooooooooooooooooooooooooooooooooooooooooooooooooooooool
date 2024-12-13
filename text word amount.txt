@@ -1,0 +1,5 @@
+kas:4
+kur:2
+ko:2
+ka:2
+kam:1

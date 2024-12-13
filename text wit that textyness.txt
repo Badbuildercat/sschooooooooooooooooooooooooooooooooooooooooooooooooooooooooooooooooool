@@ -1,0 +1,16 @@
+pain, 13,41,25
+corn, 4,12,33
+barn, 8,28,32
+iron, 43,1,23
+carbon, 38,19,20
+grain, 26,19,21
+money, 32,41,12
+dough, 10,20,51
+plot, 34,17,36
+bone, 34,16,29
+panda, 14,17,11
+t-34, 24,29,36
+ogre, 21,23,46
+steel, 54,42,12
+cards,46,17,34
+chest of fortune, 58,88,69

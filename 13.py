@@ -17,10 +17,8 @@ while True:
         print("how dare you touch thy button")
     if event=='OK':
         print(value['-IN-'])
-        """
     if event=='the button is sus':
         print(f"Your a Communist {value['-INN-']} {value['-INNN-']}.")
-        """
     elif event=='the button is sus':
         if value['-INN-'] and value['-INNN-']:
             window['-SUS-'].update(f"Your a Communist {value['-INN-']} {value['-INNN-']}!")

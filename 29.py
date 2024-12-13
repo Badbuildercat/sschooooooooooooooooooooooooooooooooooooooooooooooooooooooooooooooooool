@@ -2,7 +2,7 @@ import matplotlib.pyplot as pit
 
 
 #read the data
-name="1.txt"
+name="text123.txt"
 
 
 kat=[]

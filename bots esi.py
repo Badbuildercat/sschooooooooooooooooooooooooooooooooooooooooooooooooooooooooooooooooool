@@ -47,7 +47,7 @@ while run:
         enemy_win = +1
 
     spelet = input("if you don't want to play type no (n): ")
-    if spelet == "yes" or spelet == "y":
+    if spelet == " no" or spelet == "n":
         run = False
     else:
         continue
